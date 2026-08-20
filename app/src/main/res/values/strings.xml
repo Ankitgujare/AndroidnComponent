@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AndroidJetpack</string>
+    <string name="title_activity_life_cycle">ActivityLifeCycle</string>
+</resources>
