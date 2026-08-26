@@ -20,6 +20,7 @@
             android:name="._1_activitylifecycle.ActivityLifecycle"
             android:exported="false" />
         <activity
+            android:launchMode="singleTop"
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

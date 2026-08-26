@@ -1,5 +1,6 @@
 package com.example.androidjetpack._1_activitylifecycle
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,46 +24,58 @@ class ActivityLifeCycle : ComponentActivity() {
     private val TAG = "ActivityLifeCycle"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG,"oncreate :: ActivityLifeCycle")
         enableEdgeToEdge()
         setContent {
             AndroidJetpackTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                val intent= Intent(
+                    this@ActivityLifeCycle,
+                    ActivityLifeCycle::class.java
+                )
+                Column(
+                    modifier=Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Button(
+                        onClick = {
+                            startActivity(intent)
+                        }
+                    ) {
+                        Text("Back")
+                    }
                 }
             }
         }
     }
 
     override fun onStart() {
-        Log.d(TAG,"onStart")
+        Log.d(TAG,"onStart :: ActivityLifeCycle")
         super.onStart()
     }
 
     override fun onDestroy() {
-        Log.d(TAG,"onDestroy")
+        Log.d(TAG,"onDestroy :: ActivityLifeCycle")
         super.onDestroy()
     }
 
     override fun onResume() {
-        Log.d(TAG,"onResume")
+        Log.d(TAG,"onResume :: ActivityLifeCycle")
         super.onResume()
     }
 
     override fun onPause() {
-        Log.d(TAG,"onPause")
+        Log.d(TAG,"onPause :: ActivityLifeCycle")
         super.onPause()
     }
 
     override fun onStop() {
-        Log.d(TAG,"onStop")
+        Log.d(TAG,"onStop :: ActivityLifeCycle")
         super.onStop()
     }
 
     override fun onRestart() {
-        Log.d(TAG,"onRestart")
+        Log.d(TAG,"onRestart :: ActivityLifeCycle")
         super.onRestart()
     }
 }

@@ -7,38 +7,82 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.androidjetpack._1_activitylifecycle.ActivityLifeCycle
 import com.example.androidjetpack.ui.theme.AndroidJetpackTheme
 
 class MainActivity : ComponentActivity() {
-    private val TAG = "MainActivity"
+    private val TAG = "ActivityLifeCycle"
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d(TAG, "onCreate")
+        Log.d(TAG, "onCreate :: MainActivity")
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             AndroidJetpackTheme {
-                Intent(
+               /* Intent(
                     this,
                     ActivityLifeCycle::class.java
                 ).also {
                     startActivity(it)
-                }
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Text(
-                        text = "Hello World!",
-                        modifier = Modifier.padding(innerPadding)
+                }*/
+                Column(
+                    modifier=Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+
+                    val intent= Intent(
+                        this@MainActivity,
+                        ActivityLifeCycle::class.java
                     )
+                    Button(onClick = {
+                       startActivity(intent)
+                    }) {
+                        Text("Next Page")
+                    }
                 }
             }
         }
     }
 
+    override fun onStart() {
+        Log.d(TAG,"onStart :: MainActivity")
+        super.onStart()
+    }
+
+    override fun onDestroy() {
+        Log.d(TAG,"onDestroy :: MainActivity")
+        super.onDestroy()
+    }
+
+    override fun onResume() {
+        Log.d(TAG,"onResume :: MainActivity")
+        super.onResume()
+    }
+
+    override fun onPause() {
+        Log.d(TAG,"onPause :: MainActivity")
+        super.onPause()
+    }
+
+    override fun onStop() {
+        Log.d(TAG,"onStop :: MainActivity")
+        super.onStop()
+    }
+
+    override fun onRestart() {
+        Log.d(TAG,"onRestart :: MainActivity")
+        super.onRestart()
+    }
 }
+
