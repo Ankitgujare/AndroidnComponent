@@ -22,7 +22,7 @@ import com.example.androidjetpack._1_activitylifecycle.ActivityLifeCycle
 import com.example.androidjetpack.ui.theme.AndroidJetpackTheme
 
 class MainActivity : ComponentActivity() {
-    private val TAG = "ActivityLifeCycle"
+    private val TAG = "${javaClass.simpleName}"
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate :: MainActivity")
         super.onCreate(savedInstanceState)
