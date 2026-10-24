@@ -26,9 +26,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.androidjetpack._1_activitylifecycle.ui.theme.AndroidJetpackTheme
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ActivityLifeCycle : ComponentActivity() {
     private val TAG = "${javaClass.simpleName}"
+    private val TAG1 = "Coroutine"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG,"oncreate :: ActivityLifeCycle----------------------------------------------")

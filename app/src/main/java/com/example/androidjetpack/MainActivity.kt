@@ -20,13 +20,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.androidjetpack._1_activitylifecycle.ActivityLifeCycle
 import com.example.androidjetpack.ui.theme.AndroidJetpackTheme
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
     private val TAG = "${javaClass.simpleName}"
+    private val TAG1 = "Coroutine"
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate :: MainActivity")
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        GlobalScope.launch(Dispatchers.IO) {
+            Log.d(TAG1,"Hello from Coroutine Running On the Thread ::  ${Thread.currentThread().name}")
+        }
+        Log.d(TAG1,"Hello From the Main Thread ::  ${Thread.currentThread().name}")
         setContent {
             AndroidJetpackTheme {
                /* Intent(
